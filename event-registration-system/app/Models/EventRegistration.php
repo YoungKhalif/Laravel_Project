@@ -9,6 +9,7 @@ class EventRegistration extends Model
 {
     use HasFactory;
 
+<<<<<<< HEAD
     /**
      * The attributes that are mass assignable.
      *
@@ -28,18 +29,36 @@ class EventRegistration extends Model
     /**
      * Get the event that owns the registration.
      */
+=======
+    protected $fillable = [
+        'event_id',
+        'user_id',
+        'registration_date',
+        'status',
+        'notes'
+    ];
+
+    protected $casts = [
+        'registration_date' => 'datetime'
+    ];
+
+>>>>>>> 8a996aa7d56b8b38ce7291c226b99d292509af77
     public function event()
     {
         return $this->belongsTo(Event::class);
     }
 
+<<<<<<< HEAD
     /**
      * Get the user that owns the registration.
      */
+=======
+>>>>>>> 8a996aa7d56b8b38ce7291c226b99d292509af77
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+<<<<<<< HEAD
 
     /**
      * Get the ticket associated with the registration.
@@ -67,4 +86,6 @@ class EventRegistration extends Model
 
         return $prefix . $random;
     }
+=======
+>>>>>>> 8a996aa7d56b8b38ce7291c226b99d292509af77
 }

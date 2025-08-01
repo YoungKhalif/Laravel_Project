@@ -9,6 +9,7 @@ class Company extends Model
 {
     use HasFactory;
 
+<<<<<<< HEAD
     /**
      * The attributes that are mass assignable.
      *
@@ -41,6 +42,29 @@ class Company extends Model
     /**
      * Get the events for the company.
      */
+=======
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'address',
+        'website',
+        'description',
+        'logo',
+        'is_verified',
+        'registration_number'
+    ];
+
+    protected $casts = [
+        'is_verified' => 'boolean',
+    ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+>>>>>>> 8a996aa7d56b8b38ce7291c226b99d292509af77
     public function events()
     {
         return $this->hasMany(Event::class);
