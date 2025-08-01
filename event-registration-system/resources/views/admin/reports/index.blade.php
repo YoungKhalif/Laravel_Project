@@ -1,0 +1,740 @@
+@extends('layouts.app')
+
+@section('title', 'Reports & Analytics - EventPro Admin')
+
+@section('content')
+<x-admin-layout :pageTitle="'Reports & Analytics'" :breadcrumbs="[
+    ['name' => 'Dashboard', 'url' => route('admin.dashboard')],
+    ['name' => 'Reports', 'url' => null]
+]">
+    <!-- Date Range Selector -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-0">Reports & Analytics</h5>
+                    <p class="text-muted small mb-0">View and export performance data</p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="input-group">
+                        <input type="date" class="form-control" value="2025-01-01">
+                        <span class="input-group-text">to</span>
+                        <input type="date" class="form-control" value="2025-03-31">
+                        <button class="btn btn-primary" type="button">Apply</button>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="btn-group w-100">
+                        <button type="button" class="btn btn-outline-primary">
+                            <i class="fas fa-file-export me-2"></i> Export
+                        </button>
+                        <button type="button" class="btn btn-outline-primary">
+                            <i class="fas fa-print me-2"></i> Print
+                        </button>
+                        <button type="button" class="btn btn-outline-primary">
+                            <i class="fas fa-share-alt me-2"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Revenue & Metrics Overview -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="stat-icon bg-primary-light text-primary rounded-3 p-3">
+                            <i class="fas fa-dollar-sign fs-4"></i>
+                        </div>
+                        <div class="stat-value">
+                            <h3 class="fw-bold mb-0">$78,452</h3>
+                            <span class="text-success small fw-semibold">
+                                <i class="fas fa-arrow-up me-1"></i>18%
+                            </span>
+                        </div>
+                    </div>
+                    <h5 class="fw-semibold mb-0">Total Revenue</h5>
+                    <p class="text-muted small mb-0">Q1 2025 (Jan - Mar)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="stat-icon bg-success-light text-success rounded-3 p-3">
+                            <i class="fas fa-ticket-alt fs-4"></i>
+                        </div>
+                        <div class="stat-value">
+                            <h3 class="fw-bold mb-0">1,547</h3>
+                            <span class="text-success small fw-semibold">
+                                <i class="fas fa-arrow-up me-1"></i>24%
+                            </span>
+                        </div>
+                    </div>
+                    <h5 class="fw-semibold mb-0">Tickets Sold</h5>
+                    <p class="text-muted small mb-0">Q1 2025 (Jan - Mar)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="stat-icon bg-info-light text-info rounded-3 p-3">
+                            <i class="fas fa-users fs-4"></i>
+                        </div>
+                        <div class="stat-value">
+                            <h3 class="fw-bold mb-0">354</h3>
+                            <span class="text-success small fw-semibold">
+                                <i class="fas fa-arrow-up me-1"></i>12%
+                            </span>
+                        </div>
+                    </div>
+                    <h5 class="fw-semibold mb-0">New Users</h5>
+                    <p class="text-muted small mb-0">Q1 2025 (Jan - Mar)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="stat-icon bg-warning-light text-warning rounded-3 p-3">
+                            <i class="fas fa-calendar-check fs-4"></i>
+                        </div>
+                        <div class="stat-value">
+                            <h3 class="fw-bold mb-0">32</h3>
+                            <span class="text-success small fw-semibold">
+                                <i class="fas fa-arrow-up me-1"></i>8%
+                            </span>
+                        </div>
+                    </div>
+                    <h5 class="fw-semibold mb-0">Events Held</h5>
+                    <p class="text-muted small mb-0">Q1 2025 (Jan - Mar)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <!-- Monthly Revenue Trend -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white p-4 border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="fw-bold mb-0">Revenue Trend</h5>
+                            <p class="text-muted small mb-0">Monthly revenue and ticket sales for 2025</p>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-primary active">Revenue</button>
+                            <button type="button" class="btn btn-sm btn-outline-primary">Tickets</button>
+                            <button type="button" class="btn btn-sm btn-outline-primary">Combined</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <div class="chart-container" style="height: 350px;">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sales by Category -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white p-4 border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold mb-0">Sales by Category</h5>
+                        <button type="button" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-filter me-1"></i> Filter
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <div class="chart-container mb-3" style="height: 250px;">
+                        <canvas id="categorySalesChart"></canvas>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Category</th>
+                                    <th class="text-end">Revenue</th>
+                                    <th class="text-end">Tickets</th>
+                                    <th class="text-end">%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color me-2" style="background-color: #3b82f6;"></div>
+                                            <div>Music</div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">$32,150</td>
+                                    <td class="text-end">643</td>
+                                    <td class="text-end">41%</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color me-2" style="background-color: #10b981;"></div>
+                                            <div>Business</div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">$18,745</td>
+                                    <td class="text-end">375</td>
+                                    <td class="text-end">24%</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color me-2" style="background-color: #f59e0b;"></div>
+                                            <div>Technology</div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">$15,420</td>
+                                    <td class="text-end">308</td>
+                                    <td class="text-end">20%</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color me-2" style="background-color: #ef4444;"></div>
+                                            <div>Arts</div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">$7,825</td>
+                                    <td class="text-end">156</td>
+                                    <td class="text-end">10%</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color me-2" style="background-color: #8b5cf6;"></div>
+                                            <div>Sports</div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">$4,312</td>
+                                    <td class="text-end">65</td>
+                                    <td class="text-end">5%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <!-- Geographic Distribution -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white p-4 border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold mb-0">Geographic Distribution</h5>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                Revenue
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item active" href="#">Revenue</a></li>
+                                <li><a class="dropdown-item" href="#">Tickets Sold</a></li>
+                                <li><a class="dropdown-item" href="#">Events</a></li>
+                                <li><a class="dropdown-item" href="#">Users</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <div class="chart-container" style="height: 350px;">
+                        <!-- Map chart would go here, using placeholder for layout -->
+                        <div class="geo-map-placeholder d-flex flex-column align-items-center justify-content-center h-100">
+                            <div class="mb-3">
+                                <i class="fas fa-map-marked-alt fa-4x text-muted"></i>
+                            </div>
+                            <h6 class="text-muted">Geographic Distribution Map</h6>
+                            <p class="text-muted small text-center">An interactive map showing revenue distribution across regions would be displayed here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Performing Events -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white p-4 border-0 d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold mb-0">Top Performing Events</h5>
+                    <button class="btn btn-sm btn-outline-primary">View All</button>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="ps-4">Event</th>
+                                    <th>Date</th>
+                                    <th>Revenue</th>
+                                    <th>Tickets</th>
+                                    <th class="text-end pe-4">Fill Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="event-img me-3" style="background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80');"></div>
+                                            <div>Music Festival 2025</div>
+                                        </div>
+                                    </td>
+                                    <td>Sep 05, 2025</td>
+                                    <td>$24,750</td>
+                                    <td>247</td>
+                                    <td class="text-end pe-4">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <div class="me-2">24.7%</div>
+                                            <div class="progress flex-grow-1" style="height: 6px; width: 80px">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 24.7%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="event-img me-3" style="background-image: url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80');"></div>
+                                            <div>Tech Conference 2025</div>
+                                        </div>
+                                    </td>
+                                    <td>Aug 15, 2025</td>
+                                    <td>$12,540</td>
+                                    <td>125</td>
+                                    <td class="text-end pe-4">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <div class="me-2">25.0%</div>
+                                            <div class="progress flex-grow-1" style="height: 6px; width: 80px">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 25%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="event-img me-3" style="background-image: url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=1572&q=80');"></div>
+                                            <div>Sports Tournament</div>
+                                        </div>
+                                    </td>
+                                    <td>Mar 18, 2025</td>
+                                    <td>$22,500</td>
+                                    <td>450</td>
+                                    <td class="text-end pe-4">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <div class="me-2">100.0%</div>
+                                            <div class="progress flex-grow-1" style="height: 6px; width: 80px">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="event-img me-3" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');"></div>
+                                            <div>Art Exhibition</div>
+                                        </div>
+                                    </td>
+                                    <td>Nov 22, 2025</td>
+                                    <td>$3,250</td>
+                                    <td>32</td>
+                                    <td class="text-end pe-4">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <div class="me-2">16.0%</div>
+                                            <div class="progress flex-grow-1" style="height: 6px; width: 80px">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 16%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="event-img me-3" style="background-image: url('https://images.unsplash.com/photo-1515169067868-5387ec356754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80');"></div>
+                                            <div>Business Summit 2025</div>
+                                        </div>
+                                    </td>
+                                    <td>Oct 12, 2025</td>
+                                    <td>$0</td>
+                                    <td>0</td>
+                                    <td class="text-end pe-4">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <div class="me-2">0.0%</div>
+                                            <div class="progress flex-grow-1" style="height: 6px; width: 80px">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Tabs -->
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white p-4 border-0">
+            <ul class="nav nav-tabs card-header-tabs" id="reportTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="sales-tab" data-bs-toggle="tab" href="#sales" role="tab" aria-controls="sales" aria-selected="true">
+                        <i class="fas fa-chart-line me-2"></i> Sales Report
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="users-tab" data-bs-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false">
+                        <i class="fas fa-users me-2"></i> User Report
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="events-tab" data-bs-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">
+                        <i class="fas fa-calendar me-2"></i> Event Report
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="conversion-tab" data-bs-toggle="tab" href="#conversion" role="tab" aria-controls="conversion" aria-selected="false">
+                        <i class="fas fa-exchange-alt me-2"></i> Conversion Report
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="tab-content" id="reportTabContent">
+                <!-- Sales Report Tab -->
+                <div class="tab-pane fade show active" id="sales" role="tabpanel" aria-labelledby="sales-tab">
+                    <div class="d-flex justify-content-between mb-4">
+                        <h5 class="fw-bold">Sales Report - Q1 2025</h5>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-outline-secondary active">Daily</button>
+                            <button class="btn btn-sm btn-outline-secondary">Weekly</button>
+                            <button class="btn btn-sm btn-outline-secondary">Monthly</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Transactions</th>
+                                    <th>Tickets Sold</th>
+                                    <th>Gross Sales</th>
+                                    <th>Refunds</th>
+                                    <th>Net Sales</th>
+                                    <th>Avg. Order Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mar 31, 2025</td>
+                                    <td>24</td>
+                                    <td>52</td>
+                                    <td>$2,640</td>
+                                    <td>$0</td>
+                                    <td>$2,640</td>
+                                    <td>$110.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Mar 30, 2025</td>
+                                    <td>18</td>
+                                    <td>36</td>
+                                    <td>$1,980</td>
+                                    <td>$120</td>
+                                    <td>$1,860</td>
+                                    <td>$110.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Mar 29, 2025</td>
+                                    <td>31</td>
+                                    <td>64</td>
+                                    <td>$3,480</td>
+                                    <td>$240</td>
+                                    <td>$3,240</td>
+                                    <td>$112.26</td>
+                                </tr>
+                                <tr>
+                                    <td>Mar 28, 2025</td>
+                                    <td>27</td>
+                                    <td>42</td>
+                                    <td>$2,350</td>
+                                    <td>$0</td>
+                                    <td>$2,350</td>
+                                    <td>$87.04</td>
+                                </tr>
+                                <tr>
+                                    <td>Mar 27, 2025</td>
+                                    <td>22</td>
+                                    <td>38</td>
+                                    <td>$1,920</td>
+                                    <td>$180</td>
+                                    <td>$1,740</td>
+                                    <td>$87.27</td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="table-light fw-bold">
+                                <tr>
+                                    <td>Total (Q1 2025)</td>
+                                    <td>1,254</td>
+                                    <td>1,547</td>
+                                    <td>$80,452</td>
+                                    <td>$2,000</td>
+                                    <td>$78,452</td>
+                                    <td>$101.24</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <nav aria-label="Sales pagination">
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <i class="fas fa-chevron-left small"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="fas fa-chevron-right small"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <div>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-file-csv me-2"></i> Export CSV
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other report tabs content would go here -->
+                <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+                    <div class="d-flex justify-content-center align-items-center py-5">
+                        <div class="text-center">
+                            <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                            <h5>User Report</h5>
+                            <p class="text-muted">User growth, engagement, and retention analytics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+                    <div class="d-flex justify-content-center align-items-center py-5">
+                        <div class="text-center">
+                            <i class="fas fa-calendar fa-3x text-muted mb-3"></i>
+                            <h5>Event Report</h5>
+                            <p class="text-muted">Event performance, attendance, and feedback analytics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="conversion" role="tabpanel" aria-labelledby="conversion-tab">
+                    <div class="d-flex justify-content-center align-items-center py-5">
+                        <div class="text-center">
+                            <i class="fas fa-exchange-alt fa-3x text-muted mb-3"></i>
+                            <h5>Conversion Report</h5>
+                            <p class="text-muted">Visitor to registration conversion rate analytics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-admin-layout>
+@endsection
+
+@push('styles')
+<style>
+    .stat-icon {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bg-primary-light { background-color: rgba(59, 130, 246, 0.1); }
+    .bg-success-light { background-color: rgba(16, 185, 129, 0.1); }
+    .bg-warning-light { background-color: rgba(245, 158, 11, 0.1); }
+    .bg-info-light { background-color: rgba(6, 182, 212, 0.1); }
+
+    .event-img {
+        width: 40px;
+        height: 40px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 6px;
+    }
+
+    .legend-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+    }
+
+    .geo-map-placeholder {
+        background-color: #f8fafc;
+        border-radius: 8px;
+    }
+
+    .nav-tabs .nav-link {
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    .nav-tabs .nav-link.active {
+        color: #3b82f6;
+        font-weight: 600;
+    }
+</style>
+@endpush
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Revenue Chart
+    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+
+    // Create gradient for the area under the line
+    const revenueGradient = revenueCtx.createLinearGradient(0, 0, 0, 350);
+    revenueGradient.addColorStop(0, 'rgba(59, 130, 246, 0.5)');
+    revenueGradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+
+    const revenueChart = new Chart(revenueCtx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Revenue',
+                data: [25000, 28000, 32000, null, null, null, null, null, null, null, null, null],
+                borderColor: '#3b82f6',
+                backgroundColor: revenueGradient,
+                borderWidth: 2,
+                pointBackgroundColor: '#ffffff',
+                pointBorderColor: '#3b82f6',
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return '$' + value.toLocaleString();
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    titleColor: '#1f2937',
+                    bodyColor: '#4b5563',
+                    bodySpacing: 6,
+                    padding: 12,
+                    borderColor: 'rgba(0, 0, 0, 0.1)',
+                    borderWidth: 1,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += '$' + context.parsed.y.toLocaleString();
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Category Sales Chart
+    const categoryCtx = document.getElementById('categorySalesChart').getContext('2d');
+    const categorySalesChart = new Chart(categoryCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Music', 'Business', 'Technology', 'Arts', 'Sports'],
+            datasets: [{
+                data: [41, 24, 20, 10, 5],
+                backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'],
+                borderWidth: 0,
+                hoverOffset: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    titleColor: '#1f2937',
+                    bodyColor: '#4b5563',
+                    bodySpacing: 6,
+                    padding: 12,
+                    borderColor: 'rgba(0, 0, 0, 0.1)',
+                    borderWidth: 1,
+                    callbacks: {
+                        label: function(context) {
+                            return context.label + ': ' + context.parsed + '%';
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+@endpush
